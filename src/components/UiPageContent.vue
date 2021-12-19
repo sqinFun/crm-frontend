@@ -15,7 +15,12 @@ export default {
 
 <style lang="sass" scoped>
 .page-content
-   display: grid
-   grid-template-columns: 1fr auto
+  display: grid
+  grid-template-columns: 1fr auto
+
+  &__body
+    display: flex
+    flex-direction: column
+    padding: 20px
 
 </style>
