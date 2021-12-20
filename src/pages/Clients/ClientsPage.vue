@@ -1,6 +1,8 @@
 <template lang="pug">
   UiPageContent.clients-page
-    UiUserTable
+    UiUserTable(
+      @click:row="openUser"
+    )
 </template>
 
 <script>
@@ -13,6 +15,15 @@ export default {
     UiUserFilter,
     UiUserTable,
   },
+  methods: {
+    openUser({id}) {
+      this.$router.push({
+        name: 'Client',
+        params: {
+          id,
+        }})
+    }
+  }
 }
 </script>
 

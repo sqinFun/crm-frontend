@@ -1,5 +1,6 @@
 const path = require("path");
 
+
 module.exports = {
   transpileDependencies: [
     'vuetify'
@@ -11,6 +12,15 @@ module.exports = {
         "@pages": path.resolve(__dirname, './src/pages'),
         "@components": path.resolve(__dirname, './src/components'),
       },
-    }
+    },
   },
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `
+            @import "src/style/index"
+          `
+      }
+    }
+  }
 }

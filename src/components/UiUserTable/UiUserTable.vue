@@ -38,7 +38,7 @@ export default {
         },
         {
           text: 'Фамилия',
-          value: 'secondName'
+          value: 'lastName'
         },
         {
           text: 'Отчество',
@@ -59,6 +59,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.user-table
 
 </style>
