@@ -1,6 +1,7 @@
 <template lang="pug">
   UiPageContent.clients-page
     UiUserTable(
+      :users="users"
       @click:row="openUser"
     )
 </template>
@@ -9,11 +10,21 @@
 import UiPageContent from "@components/UiPageContent";
 import UiUserFilter from "@components/UiUserFilter";
 import UiUserTable from "@components/UiUserTable/UiUserTable";
+import {mapState} from "vuex";
+
 export default {
   components: {
     UiPageContent,
     UiUserFilter,
     UiUserTable,
+  },
+  computed: {
+    ...mapState('users', {
+      users: s => s.users,
+    }),
+  },
+  created() {
+    this.getUsers()
   },
   methods: {
     openUser({id}) {
@@ -21,8 +32,13 @@ export default {
         name: 'Client',
         params: {
           id,
-        }})
+        }
+      })
+    },
+    getUsers() {
+      this.$store.dispatch('users/getUsers')
     }
+
   }
 }
 </script>

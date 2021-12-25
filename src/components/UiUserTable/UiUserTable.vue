@@ -15,16 +15,16 @@
 <script>
 import UiPageContent from "@components/UiPageContent";
 import UiUserFilter from "@components/UiUserFilter";
-import {mapState} from 'vuex'
+
 export default {
   components: {
     UiPageContent,
     UiUserFilter,
   },
+  props: {
+    users: Array,
+  },
   computed: {
-    ...mapState('users', {
-      users: s => s.users,
-    }),
     headers() {
       return [
         {

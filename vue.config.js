@@ -1,5 +1,5 @@
 const path = require("path");
-
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   transpileDependencies: [
@@ -13,6 +13,9 @@ module.exports = {
         "@components": path.resolve(__dirname, './src/components'),
       },
     },
+    plugins: [
+      new Dotenv(),
+    ]
   },
   css: {
     loaderOptions: {
