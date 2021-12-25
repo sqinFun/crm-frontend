@@ -6,6 +6,7 @@
       VDataTable(
         :headers="headers"
         :items="users"
+        :loading="loading"
         hide-default-footer
         disable-sort
         @click:row="$emit('click:row', $event)"
@@ -23,6 +24,7 @@ export default {
   },
   props: {
     users: Array,
+    loading: Boolean,
   },
   computed: {
     headers() {

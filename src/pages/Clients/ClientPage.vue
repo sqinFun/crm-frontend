@@ -16,7 +16,7 @@ export default {
   computed: {
     userId() {
       return +this.$route.params.id
-    }
+    },
   }
 }
 </script>

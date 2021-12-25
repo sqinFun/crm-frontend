@@ -12,9 +12,16 @@ export default {
   components: {
     UiPage
   },
+  created() {
+    this.init()
+  },
+  methods: {
+    init() {
+      this.$store.dispatch('roles/getRoles')
+    },
+    getRoles() {
 
-  data: () => ({
-    //
-  }),
+    }
+  }
 };
 </script>

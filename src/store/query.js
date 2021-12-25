@@ -7,7 +7,6 @@ export default {
   },
   actions: {
     async get({dispatch}, {url, params, config}) {
-      console.log('query')
       return dispatch('send', {
         method: 'get',
         url: url,

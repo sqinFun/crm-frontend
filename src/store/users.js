@@ -3,18 +3,27 @@ import mutations from "@/store/mutations";
 export default {
   namespaced: true,
   state: {
-    users: []
+    users: [],
+
+    usersLoading: false,
   },
   actions: {
     async getUsers({dispatch, commit}) {
-      const res = await dispatch('query/get', {url: '/users'}, {root: true})
-      commit('setData',{path: 'users', value: res.data })
-    }
+      try {
+        commit('setData',{path: 'usersLoading', value: true })
+
+        const res = await dispatch('query/get', {url: '/users'}, {root: true})
+        commit('setData',{path: 'users', value: res.data })
+      } finally {
+        commit('setData',{path: 'usersLoading', value: false })
+      }
+    },
+    async getUser({dispatch}, {id}) {
+        const res = await dispatch('query/get', {url: `/users/${id}`}, {root: true})
+        return res.data
+    },
   },
   mutations: {
     ...mutations,
-    toggleMenu(state) {
-      state.isOpenMenu = !state.isOpenMenu
-    },
   }
 }

@@ -2,6 +2,7 @@
   UiPageContent.clients-page
     UiUserTable(
       :users="users"
+      :loading="usersLoading"
       @click:row="openUser"
     )
 </template>
@@ -21,6 +22,7 @@ export default {
   computed: {
     ...mapState('users', {
       users: s => s.users,
+      usersLoading: s => s.usersLoading,
     }),
   },
   created() {

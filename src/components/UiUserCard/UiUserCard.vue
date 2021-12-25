@@ -6,28 +6,53 @@
         VTextField.user-card__input(
           v-model="user.firstName"
           hide-details
+          placeholder="—"
           readonly
         )
       UiUserCardField.user-card__field(title="Фамилия")
         VTextField.user-card__input(
           v-model="user.lastName"
           hide-details
+          placeholder="—"
           readonly
         )
       UiUserCardField.user-card__field(title="Отчество")
         VTextField.user-card__input(
           v-model="user.middleName"
           hide-details
+          placeholder="—"
           readonly
         )
-
-
   UiUserCardBlock
     UiUserAvatar(
       :src="user.avatar"
     )
-
   UiUserCardBlock(title="Личное")
+    UiUserCardField.user-card__field(title="Телефон")
+      VTextField.user-card__input(
+        v-model="user.phone"
+        hide-details
+        placeholder="—"
+        readonly
+      )
+    UiUserCardField.user-card__field(title="E-mail")
+      VTextField.user-card__input(
+        v-model="user.email"
+        hide-details
+        placeholder="—"
+        readonly
+      )
+  UiUserCardBlock(title="Скрытое")
+    UiUserCardField.user-card__field(title="Роль")
+      VSelect.user-card__input(
+        v-model="user.roleId"
+        item-text="name"
+        item-value="id"
+        :items="roles"
+        hide-details
+        placeholder="—"
+        readonly
+      )
 
 
 
@@ -37,6 +62,7 @@
 import UiUserAvatar from "@components/UiUserCard/UiUserAvatar";
 import UiUserCardBlock from "@components/UiUserCard/UiUserCardBlock";
 import UiUserCardField from "@components/UiUserCard/UiUserCardField";
+import {mapState} from "vuex";
 export default {
   components: {
     UiUserAvatar,
@@ -48,15 +74,28 @@ export default {
   },
   data: () => ({
     user: {
-      id: 1,
-      firstName: 'Иван',
-      middleName: 'Иванович',
-      lastName: 'Иванов',
-      phone: "+7(123)456-78-90",
-      email: 'ivan.i.i@gmail.com',
-      avatar: '/mock-avatar.jpg'
-    }
+    },
+
+    loading: false
   }),
+  computed: {
+    ...mapState('roles', {
+      roles: s => s.roles,
+    })
+  },
+  created() {
+    this.getUser()
+  },
+  methods: {
+    async getUser() {
+      try {
+        this.loading = true
+        this.user = await this.$store.dispatch('users/getUser', {id: this.userId})
+      } finally {
+        this.loading = false
+      }
+    }
+  }
 }
 </script>
 
@@ -71,12 +110,9 @@ export default {
     display: grid
     grid-gap: 10px
 
-  &__field
-
-
   &__input
     padding: 0
-    maring: 0
+    margin: 0
 
 
 </style>
