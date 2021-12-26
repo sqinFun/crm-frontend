@@ -5,6 +5,8 @@ import TasksPage from "@pages/TasksPage";
 import ClientsPage from "@pages/Clients/ClientsPage";
 import ClientPage from "@pages/Clients/ClientPage";
 import StaffPage from "@pages/StaffPage";
+import LoginPage from "@pages/Auth/LoginPage";
+import RegisterPage from "@pages/Auth/RegisterPage";
 
 Vue.use(VueRouter)
 
@@ -33,6 +35,16 @@ const routes = [
     path: '/',
     name: 'Staff',
     component: StaffPage,
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: RegisterPage,
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginPage,
   },
 ]
 

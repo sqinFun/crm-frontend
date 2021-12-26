@@ -43,7 +43,11 @@ export default {
     },
 
     async send(_, config) {
-      return axios(config)
+      const authToken = localStorage.getItem('authToken')
+      const headers = config.headers ?? {}
+      headers.Authorization = `Bearer ${authToken}`
+
+      return axios({...config, headers})
     },
   },
 }
