@@ -14,4 +14,19 @@ export const links = [
     href: '/clients',
     icon: 'mdi-account-multiple ',
   },
+  {
+    title: 'Вход',
+    href: '/login',
+    icon: 'mdi-account-multiple ',
+  },
+  {
+    title: 'Настройки',
+    icon: 'mdi-cog-outline',
+    children: [
+      {
+        title: 'права',
+        href: '/settings/rules',
+      }
+    ]
+  },
 ]

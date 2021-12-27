@@ -1,17 +1,25 @@
 <template lang="pug">
-  v-navigation-drawer(permanent='' expand-on-hover='')
-    v-list
-      v-list-item(link to="/")
-        v-list-item-content
-          v-list-item-title.text-h6
-            | CRM
+  v-navigation-drawer.ui-menu(
+    :value="true"
+    :mini-variant="!isOpenMenu"
+  )
+    v-list-item
+      v-list-item-icon.ui-menu__hamburger(
+        @click="toggleMenu"
+      )
+        v-icon.pointer mdi-menu
+
     v-divider
     v-list
-      UiMenuItem(
+      template(
         v-for="link in links"
-        :key="link.id"
-        v-bind="link"
       )
+        component.ui-menu__item(
+          :is="getMenuItemComponent(link)"
+          :key="link.id"
+          v-bind="link"
+          @click.native="openMenu"
+        )
 
 
 
@@ -20,21 +28,39 @@
 
 <script>
 import UiMenuItem from "@components/UiMenu/UiMenuItem";
+import UiMenuGroup from "@components/UiMenu/UiMenuGroup";
 import {links} from "@components/UiMenu/menuLinks";
 
 export default {
+  data: () => ({
+    isOpenMenu: true
+  }),
   components: {
     UiMenuItem,
+    UiMenuGroup,
   },
   computed: {
     links() {
       return links;
     }
+  },
+  methods: {
+    toggleMenu() {
+      console.log('toggle')
+      this.isOpenMenu = !this.isOpenMenu
+    },
+    openMenu() {
+      this.isOpenMenu = true
+    },
+    getMenuItemComponent(link) {
+      return link.children?.length ? 'UiMenuGroup' : 'UiMenuItem'
+    }
   }
-
 }
 </script>
 
-<style scoped>
-
+<style lang="sass" scoped>
+.ui-menu
+  &__hamburger
+    cursor: pointer
 </style>

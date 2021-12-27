@@ -7,6 +7,8 @@ import ClientPage from "@pages/Clients/ClientPage";
 import StaffPage from "@pages/StaffPage";
 import LoginPage from "@pages/Auth/LoginPage";
 import RegisterPage from "@pages/Auth/RegisterPage";
+import SettingsPage from "@pages/Settings/SettingsPage";
+import RulesPage from "@pages/Settings/RulesPage";
 
 Vue.use(VueRouter)
 
@@ -45,6 +47,16 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: LoginPage,
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: SettingsPage,
+  },
+  {
+    path: '/settings/rules',
+    name: 'SettingsRules',
+    component: RulesPage,
   },
 ]
 

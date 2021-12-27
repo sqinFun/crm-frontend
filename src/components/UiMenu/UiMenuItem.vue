@@ -3,8 +3,9 @@
     link
     :to="href"
   )
-    v-list-item-icon
-      v-icon {{icon}}
+    v-list-item-icon(v-if="icon")
+      v-icon
+        | {{icon}}
     v-list-item-title
       | {{title}}
 </template>
@@ -15,7 +16,7 @@ export default {
     href: String,
     icon: String,
     title: String,
-  }
+  },
 }
 </script>
 
