@@ -25,7 +25,7 @@ export const links = [
     children: [
       {
         title: 'права',
-        href: '/settings/rules',
+        href: '/settings/roles',
       }
     ]
   },

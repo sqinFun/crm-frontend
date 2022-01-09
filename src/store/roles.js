@@ -22,6 +22,10 @@ export default {
       const res = await dispatch('query/get', {url: `/roles/${id}`}, {root: true})
       return res.data
     },
+    async setRules({dispatch}, {rule}) {
+      await dispatch('query/post', {url: `/rules/${rule.id}`, data: rule}, {root: true})
+      await dispatch('getRoles')
+    }
   },
   mutations: {
     ...mutations,

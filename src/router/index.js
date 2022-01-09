@@ -8,7 +8,7 @@ import StaffPage from "@pages/StaffPage";
 import LoginPage from "@pages/Auth/LoginPage";
 import RegisterPage from "@pages/Auth/RegisterPage";
 import SettingsPage from "@pages/Settings/SettingsPage";
-import RulesPage from "@pages/Settings/RulesPage";
+import RolesPage from "@pages/Settings/RolesPage";
 
 Vue.use(VueRouter)
 
@@ -54,9 +54,9 @@ const routes = [
     component: SettingsPage,
   },
   {
-    path: '/settings/rules',
-    name: 'SettingsRules',
-    component: RulesPage,
+    path: '/settings/roles',
+    name: 'SettingsRoles',
+    component: RolesPage,
   },
 ]
 
